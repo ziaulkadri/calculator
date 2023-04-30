@@ -22,8 +22,13 @@ export default function MyKeyboard(){
     }
     const handleOperationPress = (buttonValue: string) => {
         setOperation(buttonValue);
-        setSecondNumber(firstNumber);
+        if (result !== null) {
+            setSecondNumber(result.toString());
+        } else {
+            setSecondNumber(firstNumber);
+        }
         setFirstNumber("");
+        setResult(null);
       };
       const clear = () => {
         setFirstNumber("");
@@ -60,19 +65,19 @@ export default function MyKeyboard(){
         switch (operation) {
           case "+":
             clear();
-            setResult(parseInt(secondNumber) + parseInt(firstNumber));
+            setResult(parseFloat(secondNumber) + parseFloat(firstNumber));
             break;
           case "-":
             clear();
-            setResult(parseInt(secondNumber) - parseInt(firstNumber));
+            setResult(parseFloat(secondNumber) - parseFloat(firstNumber));
             break;
           case "*":
             clear();
-            setResult(parseInt(secondNumber) * parseInt(firstNumber));
+            setResult(parseFloat(secondNumber) * parseFloat(firstNumber));
             break;
           case "/":
             clear();
-            setResult(parseInt(secondNumber) / parseInt(firstNumber));
+            setResult(parseFloat(secondNumber) / parseFloat(firstNumber));
             break;
           default:
             clear();
@@ -83,7 +88,6 @@ export default function MyKeyboard(){
         setFirstNumber("");
         setOperation("");
       };
-
     return(
 <View style={Styles.viewBottom}>
       <View
