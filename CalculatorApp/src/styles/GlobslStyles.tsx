@@ -68,4 +68,8 @@ export const Styles = StyleSheet.create({
         fontWeight: '200',
         alignSelf: "flex-end",
     },
+    rowReve: {
+        maxWidth: '100%',
+        flexDirection: "row-reverse",
+    },
 })

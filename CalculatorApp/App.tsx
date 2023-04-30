@@ -3,7 +3,6 @@ import { SafeAreaView, StyleSheet, Switch, Text, View } from 'react-native';
 import { ThemeContext } from './src/context/ThemeContext';
 import { useState } from 'react';
 import { myColors } from './src/styles/Colors';
-import Button from './src/components/Button';
 import MyKeyboard from './src/components/MyKeyboard';
 
 export default function App() {
@@ -12,9 +11,8 @@ export default function App() {
     <ThemeContext.Provider value={theme}>
     <SafeAreaView style={theme === 'light'?styles.container:[styles.container,{backgroundColor:'#000'}]}>
       <StatusBar style="auto" />
-      <Switch value ={theme === 'light'}
-      onChange={()=>setTheme(theme === 'light'?'dark':'light')}/>
-      {/* <Button isGray title='3' onPress={()=>alert('hello')}/> */}
+      {/* <Switch value ={theme === 'light'}
+      onChange={()=>setTheme(theme === 'light'?'dark':'light')}/> */}
       <MyKeyboard/>
     </SafeAreaView>
     </ThemeContext.Provider>

@@ -9,7 +9,7 @@ export default function MyKeyboard(){
     const [firstNumber, setFirstNumber] = React.useState("");
     const [secondNumber, setSecondNumber] = React.useState("");
     const [operation, setOperation] = React.useState("");
-    const [result, setResult] = React.useState<Number | null >(null);
+    const [result, setResult] = React.useState<number | null >(null);
 
 
     const handleNumberPress=(buttonValue:string)=>{
@@ -59,26 +59,29 @@ export default function MyKeyboard(){
       const getResult = () => {
         switch (operation) {
           case "+":
-              clear();
-              setResult(parseInt(secondNumber) + parseInt(firstNumber));
-              break;
+            clear();
+            setResult(parseInt(secondNumber) + parseInt(firstNumber));
+            break;
           case "-":
-              clear();
-              setResult(parseInt(secondNumber) - parseInt(firstNumber));
-              break;
+            clear();
+            setResult(parseInt(secondNumber) - parseInt(firstNumber));
+            break;
           case "*":
-              clear();
-              setResult(parseInt(secondNumber) * parseInt(firstNumber));
-              break;
+            clear();
+            setResult(parseInt(secondNumber) * parseInt(firstNumber));
+            break;
           case "/":
-              clear();
-              setResult(parseInt(secondNumber) / parseInt(firstNumber));
-              break;
+            clear();
+            setResult(parseInt(secondNumber) / parseInt(firstNumber));
+            break;
           default:
-              clear();
-              setResult(0);
-              break;
-          }
+            clear();
+            setResult(0);
+            break;
+        }
+        setSecondNumber(result?.toString() || "");
+        setFirstNumber("");
+        setOperation("");
       };
 
     return(
@@ -97,11 +100,11 @@ export default function MyKeyboard(){
         </Text>
         {firstNumberDisplay()}
       </View>
-      <View style={Styles.row}>
+      <View style={Styles.rowReve}>
+      <Button title="÷" isBlue onPress={() => handleOperationPress("/")} />
         <Button title="C" isGray onPress={clear} />
-        <Button title="+/-" isGray onPress={() => handleOperationPress("+/-")} />
-        <Button title="％" isGray onPress={() => handleOperationPress("％")} />
-        <Button title="÷" isBlue onPress={() => handleOperationPress("/")} />
+        {/* <Button title="" isGray onPress={() => handleOperationPress("+/-")} /> 
+         <Button title="" isGray onPress={() => handleOperationPress("％")} /> */}
       </View>
       <View style={Styles.row}>
         <Button title="7" onPress={() => handleNumberPress("7")} />
